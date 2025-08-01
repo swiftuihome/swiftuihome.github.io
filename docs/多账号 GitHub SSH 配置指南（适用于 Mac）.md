@@ -40,7 +40,7 @@
 
 ```sh
 ssh-keygen -t ed25519 -C "swiftuihome@gmail.com" -f ~/.ssh/id_ed25519_swiftuihome
-ssh-keygen -t ed25519 -C "wumamail@qq.com" -f ~/.ssh/id_ed25519_wumacms
+ssh-keygen -t ed25519 -C "wumacms@gmail.com" -f ~/.ssh/id_ed25519_wumacms
 ```
 
 ------
@@ -91,8 +91,8 @@ Host github.com-wumacms
 # ~/.gitconfig
 
 [user]
-    name = zeldafox
-    email = zeldafoxmail@gmail.com
+    name = swiftuihome
+    email = swiftuihome@gmail.com
 
 [filter "lfs"]
     process = git-lfs filter-process
@@ -120,7 +120,7 @@ Host github.com-wumacms
 # ~/.gitconfig-swiftuihome
 [user]
     name = swiftuihome
-    email = zeldafox@gmail.com
+    email = swiftuihome@gmail.com
 
 [core]
     sshCommand = ssh -i ~/.ssh/id_ed25519_swiftuihome
@@ -134,7 +134,7 @@ Host github.com-wumacms
 # ~/.gitconfig-wumacms
 [user]
     name = wumacms
-    email = wumamail@qq.com
+    email = wumacms@gmail.com
 
 [core]
     sshCommand = ssh -i ~/.ssh/id_ed25519_wumacms
@@ -176,7 +176,7 @@ ssh -T git@github.com-wumacms
 
 cd ~/code/github/swiftuihome/TailwindButtonKit
 git config user.name   # 应显示 swiftuihome
-git config user.email  # 应显示 zeldafox@gmail.com
+git config user.email  # 应显示 swiftuihome@gmail.com
 ```
 
 ------
@@ -204,10 +204,8 @@ git config core.sshCommand "ssh -i ~/.ssh/id_ed25519_swiftuihome"
 
 ## **✅ 最终效果**
 
-| **项目路径**               | **Git 用户名** | **Git 邮箱**       | **SSH 私钥**                  | **Git remote Host**    |
-| -------------------------- | -------------- | ------------------ | ----------------------------- | ---------------------- |
-| ~/code/github/swiftuihome/ | swiftuihome    | zeldafox@gmail.com | ~/.ssh/id_ed25519_swiftuihome | github.com-swiftuihome |
-| ~/code/github/wumacms/     | wumacms        | wumamail@qq.com    | ~/.ssh/id_ed25519_wumacms     | github.com-wumacms     |
-
-------
+| **项目路径**               | **Git 用户名** | **Git邮箱**           | **SSH 私钥**                  | **Git remote Host**    |
+| -------------------------- | -------------- | --------------------- | ----------------------------- | ---------------------- |
+| ~/code/github/swiftuihome/ | swiftuihome    | swiftuihome@gmail.com | ~/.ssh/id_ed25519_swiftuihome | github.com-swiftuihome |
+| ~/code/github/wumacms/     | wumacms        | wumacms@gmail.com     | ~/.ssh/id_ed25519_wumacms     | github.com-wumacms     |
 
