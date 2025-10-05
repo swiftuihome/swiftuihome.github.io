@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SwiftUI 100天 - 图书封面 (A5尺寸)</title>
+    <style>
+        /* 重置所有边距和填充 */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body,
+        html {
+            width: 100%;
+            height: 100%;
+            margin: 0;
+            padding: 0;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+            background-color: #1C1C1E;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        /* A5尺寸容器 - 精确尺寸 */
+        .a5 {
+            width: 148mm;
+            height: 210mm;
+            margin: auto;
+            background:
+                linear-gradient(rgba(28, 28, 30, 0.85), rgba(28, 28, 30, 0.85)),
+                url('https://www.hackingwithswift.com/img/bg-blue-purple-2.jpg');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            padding: 15mm;
+            box-sizing: border-box;
+            position: relative;
+            overflow: hidden;
+            color: white;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        /* 打印设置 */
+        @page {
+            size: A5;
+            margin: 0;
+        }
+
+        @media print {
+
+            body,
+            html {
+                width: 148mm;
+                height: 210mm;
+                margin: 0;
+                padding: 0;
+                background: none;
+            }
+
+            body {
+                display: block;
+            }
+
+            .a5 {
+                width: 148mm;
+                height: 210mm;
+                margin: 0;
+                padding: 15mm;
+                box-shadow: none;
+                border: none;
+                -webkit-print-color-adjust: exact;
+                print-color-adjust: exact;
+            }
+        }
+
+        .brand-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 8mm;
+        }
+
+        .brand-info {
+            display: flex;
+            align-items: center;
+            gap: 3mm;
+        }
+
+        .brand-logo {
+            width: 15mm;
+            height: 15mm;
+        }
+
+        .brand-name {
+            font-size: 4mm;
+            font-weight: 700;
+            letter-spacing: 0.5px;
+            color: #FFFFFF;
+            text-transform: uppercase;
+        }
+
+        .title-container {
+            text-align: center;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .main-title {
+            font-size: 16mm;
+            font-weight: 900;
+            letter-spacing: -0.8px;
+            line-height: 1;
+            margin-bottom: 6mm;
+            color: white;
+        }
+
+        .accent {
+            color: #B12322;
+        }
+
+        .subtitle {
+            font-size: 6mm;
+            font-weight: 500;
+            letter-spacing: 0.4px;
+            margin-bottom: 6mm;
+            color: #FFFFFF;
+        }
+
+        .days-badge {
+            background-color: #B12322;
+            padding: 2mm 6mm;
+            border-radius: 25px;
+            font-weight: 700;
+            font-size: 5mm;
+            display: inline-block;
+            margin-top: 4mm;
+            color: white;
+            white-space: nowrap;
+            width: fit-content;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .code-preview {
+            width: 60mm;
+            background: rgba(28, 28, 30, 0.9);
+            border-radius: 2.5mm;
+            padding: 4mm;
+            font-family: 'Menlo', 'Monaco', monospace;
+            font-size: 2.8mm;
+            line-height: 1.5;
+            border: 1px solid rgba(177, 35, 34, 0.4);
+            margin: 6mm auto;
+        }
+
+        .code-line {
+            color: #78C2FF;
+        }
+
+        .code-comment {
+            color: #8E8E93;
+        }
+
+        .code-keyword {
+            color: #FF7AB2;
+        }
+
+        .footer {
+            text-align: center;
+            margin-top: auto;
+            padding-bottom: 4mm;
+        }
+
+        .author {
+            font-size: 4mm;
+            font-weight: 500;
+            color: white;
+        }
+
+        .author-name {
+            color: #B12322;
+            font-weight: 700;
+        }
+
+        /* 装饰元素 */
+        .decoration {
+            position: absolute;
+            z-index: 1;
+        }
+
+        .circle {
+            border-radius: 50%;
+            background: rgba(177, 35, 34, 0.15);
+        }
+
+        .circle-1 {
+            width: 60mm;
+            height: 60mm;
+            top: -30mm;
+            left: -30mm;
+        }
+
+        .circle-2 {
+            width: 40mm;
+            height: 40mm;
+            bottom: 15mm;
+            right: -20mm;
+        }
+
+        .circle-3 {
+            width: 30mm;
+            height: 30mm;
+            top: 25mm;
+            right: 20mm;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="a5">
+        <!-- 装饰元素 -->
+        <div class="decoration circle circle-1"></div>
+        <div class="decoration circle circle-2"></div>
+        <div class="decoration circle circle-3"></div>
+
+        <!-- 品牌头部区域 -->
+        <div class="brand-header">
+            <div class="brand-info">
+                <img src="https://www.hackingwithswift.com/img/swift_logo@2x.png" alt="Swift Logo" class="brand-logo">
+                <div class="brand-name">Hacking with Swift</div>
+            </div>
+        </div>
+
+        <!-- 标题区域 -->
+        <div class="title-container">
+            <h1 class="main-title">SwiftUI <span class="accent">100天</span></h1>
+            <p class="subtitle">掌握iOS应用开发的终极指南</p>
+            <div class="days-badge">100 DAYS OF SWIFTUI - 中文版</div>
+        </div>
+
+        <!-- 代码预览 -->
+        <div class="code-preview">
+            <div class="code-line"><span class="code-keyword">import</span> SwiftUI</div>
+            <div class="code-line"></div>
+            <div class="code-line"><span class="code-keyword">struct</span> <span
+                    class="code-comment">WelcomeView</span>: View {</div>
+            <div class="code-line">&nbsp;&nbsp;<span class="code-keyword">var</span> body: <span
+                    class="code-keyword">some</span> View {</div>
+            <div class="code-line">&nbsp;&nbsp;&nbsp;&nbsp;VStack {</div>
+            <div class="code-line">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Text(<span class="code-comment">"Hello,
+                    SwiftUI!"</span>)</div>
+            <div class="code-line">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;.font(.largeTitle)</div>
+            <div class="code-line">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;.foregroundColor(.red)</div>
+            <div class="code-line">&nbsp;&nbsp;&nbsp;&nbsp;}</div>
+            <div class="code-line">&nbsp;&nbsp;}</div>
+            <div class="code-line">}</div>
+        </div>
+    </div>
+</body>
+
+</html>
